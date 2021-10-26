@@ -13,6 +13,7 @@
 		11642F74272783E100113412 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11642F72272783E100113412 /* Main.storyboard */; };
 		11642F76272783E500113412 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11642F75272783E500113412 /* Assets.xcassets */; };
 		11642F79272783E500113412 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11642F77272783E500113412 /* LaunchScreen.storyboard */; };
+		11642F8527278DDB00113412 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11642F8427278DDB00113412 /* ImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		11642F75272783E500113412 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11642F78272783E500113412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11642F7A272783E500113412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11642F8427278DDB00113412 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				11642F80272783F000113412 /* Application */,
-				11642F832727847A00113412 /* Controller */,
+				11642F832727847A00113412 /* Controllers */,
 				11642F822727845100113412 /* Interface Builder */,
 				11642F812727840800113412 /* Supporting Files */,
 			);
@@ -91,12 +93,13 @@
 			path = "Interface Builder";
 			sourceTree = "<group>";
 		};
-		11642F832727847A00113412 /* Controller */ = {
+		11642F832727847A00113412 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				11642F70272783E100113412 /* ViewController.swift */,
+				11642F8427278DDB00113412 /* ImageViewController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +175,7 @@
 			files = (
 				11642F71272783E100113412 /* ViewController.swift in Sources */,
 				11642F6D272783E100113412 /* AppDelegate.swift in Sources */,
+				11642F8527278DDB00113412 /* ImageViewController.swift in Sources */,
 				11642F6F272783E100113412 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
