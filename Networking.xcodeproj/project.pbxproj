@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11618C8F2728DC530059F76B /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11618C8E2728DC520059F76B /* CoursesViewController.swift */; };
+		11618C912728DC750059F76B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11618C902728DC750059F76B /* TableViewCell.swift */; };
 		11642F6D272783E100113412 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11642F6C272783E100113412 /* AppDelegate.swift */; };
 		11642F6F272783E100113412 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11642F6E272783E100113412 /* SceneDelegate.swift */; };
 		11642F71272783E100113412 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11642F70272783E100113412 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11618C8E2728DC520059F76B /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
+		11618C902728DC750059F76B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		11642F69272783E100113412 /* Networking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Networking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11642F6C272783E100113412 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11642F6E272783E100113412 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 			children = (
 				11642F70272783E100113412 /* ViewController.swift */,
 				11642F8427278DDB00113412 /* ImageViewController.swift */,
+				11618C8E2728DC520059F76B /* CoursesViewController.swift */,
+				11618C902728DC750059F76B /* TableViewCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -176,7 +182,9 @@
 				11642F71272783E100113412 /* ViewController.swift in Sources */,
 				11642F6D272783E100113412 /* AppDelegate.swift in Sources */,
 				11642F8527278DDB00113412 /* ImageViewController.swift in Sources */,
+				11618C912728DC750059F76B /* TableViewCell.swift in Sources */,
 				11642F6F272783E100113412 /* SceneDelegate.swift in Sources */,
+				11618C8F2728DC530059F76B /* CoursesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
