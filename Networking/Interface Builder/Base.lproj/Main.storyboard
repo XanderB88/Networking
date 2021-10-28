@@ -129,7 +129,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SKL-WE-WZ3">
                                                     <rect key="frame" x="6" y="11" width="402" height="128"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KUv-Ts-UAf">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KUv-Ts-UAf">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="128" id="wuP-DV-Iz6"/>
@@ -140,27 +140,18 @@
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name of course" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cM7-nP-zUE">
                                                                     <rect key="frame" x="0.0" y="0.0" width="266" height="36"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="24" id="mUu-al-xgG"/>
-                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of lessons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yW-45-VsZ">
                                                                     <rect key="frame" x="0.0" y="46" width="266" height="36"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="24" id="fw1-Vu-lIv"/>
-                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of tests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sax-ZO-8gP">
                                                                     <rect key="frame" x="0.0" y="92" width="266" height="36"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="24" id="x9k-4S-RdX"/>
-                                                                    </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -183,8 +174,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="courseNumberLabel" destination="cM7-nP-zUE" id="ts4-Vr-6ID"/>
-                                            <outlet property="lesonsNumberLabel" destination="0yW-45-VsZ" id="ZmZ-4Q-BC5"/>
+                                            <outlet property="courseImage" destination="KUv-Ts-UAf" id="RNL-nF-MFd"/>
+                                            <outlet property="courseNameLabel" destination="cM7-nP-zUE" id="ts4-Vr-6ID"/>
+                                            <outlet property="lessonsNumberLabel" destination="0yW-45-VsZ" id="ZmZ-4Q-BC5"/>
                                             <outlet property="testsNumberLabel" destination="sax-ZO-8gP" id="pQ8-fL-DNf"/>
                                         </connections>
                                     </tableViewCell>
