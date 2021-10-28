@@ -88,7 +88,6 @@
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="postRequestButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ANI-TU-uta"/>
                                             <segue destination="DTG-Vb-fcY" kind="show" id="A7n-fT-BGE"/>
                                         </connections>
                                     </button>
@@ -190,6 +189,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="DTG-Vb-fcY" id="5HM-cA-h9i"/>
+                                    <outlet property="delegate" destination="DTG-Vb-fcY" id="TRq-t3-vxW"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="kBa-Vi-Tcr"/>

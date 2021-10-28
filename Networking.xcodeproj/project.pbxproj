@@ -16,6 +16,8 @@
 		11642F76272783E500113412 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11642F75272783E500113412 /* Assets.xcassets */; };
 		11642F79272783E500113412 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11642F77272783E500113412 /* LaunchScreen.storyboard */; };
 		11642F8527278DDB00113412 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11642F8427278DDB00113412 /* ImageViewController.swift */; };
+		11685DF9272A151E009E2277 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11685DF8272A151E009E2277 /* Course.swift */; };
+		11685DFC272A1715009E2277 /* CoursesNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11685DFB272A1715009E2277 /* CoursesNetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		11642F78272783E500113412 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11642F7A272783E500113412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11642F8427278DDB00113412 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		11685DF8272A151E009E2277 /* Course.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
+		11685DFB272A1715009E2277 /* CoursesNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesNetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 		11642F6B272783E100113412 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				11685DFA272A16E3009E2277 /* Managers */,
+				11685DF7272A1502009E2277 /* Model */,
 				11642F80272783F000113412 /* Application */,
 				11642F832727847A00113412 /* Controllers */,
 				11642F822727845100113412 /* Interface Builder */,
@@ -106,6 +112,22 @@
 				11618C902728DC750059F76B /* TableViewCell.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		11685DF7272A1502009E2277 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11685DF8272A151E009E2277 /* Course.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		11685DFA272A16E3009E2277 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				11685DFB272A1715009E2277 /* CoursesNetworkManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,10 +203,12 @@
 			files = (
 				11642F71272783E100113412 /* ViewController.swift in Sources */,
 				11642F6D272783E100113412 /* AppDelegate.swift in Sources */,
+				11685DF9272A151E009E2277 /* Course.swift in Sources */,
 				11642F8527278DDB00113412 /* ImageViewController.swift in Sources */,
 				11618C912728DC750059F76B /* TableViewCell.swift in Sources */,
 				11642F6F272783E100113412 /* SceneDelegate.swift in Sources */,
 				11618C8F2728DC530059F76B /* CoursesViewController.swift in Sources */,
+				11685DFC272A1715009E2277 /* CoursesNetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
