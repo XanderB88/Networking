@@ -8,14 +8,14 @@
 import Foundation
 import UIKit
 
-class CoursesNetworkManager {
+class NetworkManager {
     
-    static let shared = CoursesNetworkManager()
+    static let shared = NetworkManager()
     
     private init() {}
     
-    func fetchCourses(completion: @escaping ([Course]) -> ()) {
-        guard let url = URL(string: "https://swiftbook.ru/wp-content/uploads/api/api_courses") else { return }
+    func fetchCourses(withURL url: String, completion: @escaping ([Course]) -> ()) {
+        guard let url = URL(string: url) else { return }
         
         URLSession.shared.dataTask(with: url) { data, response, error in
 

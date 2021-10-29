@@ -10,20 +10,21 @@ import UIKit
 class CoursesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-   
-    private var swiftBookCourses = [Course]()
+    
+    private var apiURL = "https://swiftbook.ru/wp-content/uploads/api/api_courses"
     private var courseName: String?
     private var courseURL: String?
+    var viewModel: CoursesViewViewModelProtocol?
+   
     
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CoursesNetworkManager.shared.fetchCourses { courses in
-            self.swiftBookCourses = courses
-        }
-        
+        viewModel = CoursesViewViewModel()
+        viewModel?.getCourses(withURL: apiURL)
+
     }
     
     // MARK: - Navigation
@@ -43,13 +44,16 @@ class CoursesViewController: UIViewController {
 extension CoursesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return swiftBookCourses.count
+        return viewModel?.numberOfRows() ?? .zero
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! TableViewCell
+
         
-        let course = swiftBookCourses[indexPath.row]
+        guard let viewModel = viewModel else { return cell }
+        
+        let course = viewModel.getCourse(withIndexPath: indexPath)
 
         cell.courseNameLabel.text = course.name
         cell.lessonsNumberLabel.text = "Lessons: \(course.numberOfLessons)"
@@ -78,10 +82,10 @@ extension CoursesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let course = swiftBookCourses[indexPath.row]
+        let course = viewModel?.getCourse(withIndexPath: indexPath)
         
-        courseURL = course.link
-        courseName = course.name
+        courseURL = course?.link
+        courseName = course?.name
         
         performSegue(withIdentifier: "ShowPage", sender: self)
         
