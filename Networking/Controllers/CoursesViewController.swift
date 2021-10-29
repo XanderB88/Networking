@@ -11,8 +11,12 @@ class CoursesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
    
-    var swiftBookCourses = [Course]()
+    private var swiftBookCourses = [Course]()
+    private var courseName: String?
+    private var courseURL: String?
     
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,16 +26,16 @@ class CoursesViewController: UIViewController {
         
     }
     
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let detailViewController = segue.destination as! DetailViewController
+        
+        detailViewController.selectedCourse = courseName
+       
+        if let url = courseURL {
+            detailViewController.urlLink = url
+        }
     }
-    */
-
 }
 
 // MARK: - Table view data source
@@ -48,22 +52,41 @@ extension CoursesViewController: UITableViewDataSource {
         let course = swiftBookCourses[indexPath.row]
 
         cell.courseNameLabel.text = course.name
-        cell.lessonsNumberLabel.text = "Lessons: \(course.number_of_lessons)"
-        cell.testsNumberLabel.text = "Tests: \(course.number_of_tests)"
+        cell.lessonsNumberLabel.text = "Lessons: \(course.numberOfLessons)"
+        cell.testsNumberLabel.text = "Tests: \(course.numberOfTests)"
         
-        DispatchQueue.main.async {
-            
-            cell.courseImage.image = self.fetchCourseImage(withURL: course.imageUrl)
-    
-        }
+        fetchCourseImage(withCell: cell, withURL: course.imageUrl)
         
         return cell
     }
     
-    private func fetchCourseImage(withURL url: String) -> UIImage {
-        guard let url = URL(string: url), let imageData = try? Data(contentsOf: url) else { return UIImage()}
-        guard let image = UIImage(data: imageData) else { return UIImage()}
-        return image
+    private func fetchCourseImage(withCell cell: TableViewCell, withURL url: String) {
+        DispatchQueue.global().async {
+          
+            guard let url = URL(string: url), let imageData = try? Data(contentsOf: url) else { return }
+            
+            DispatchQueue.main.async {
+                cell.courseImage.image = UIImage(data: imageData)
+            }
+            
+        }
+        
     }
+}
+
+extension CoursesViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let course = swiftBookCourses[indexPath.row]
+        
+        courseURL = course.link
+        courseName = course.name
+        
+        performSegue(withIdentifier: "ShowPage", sender: self)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     
 }

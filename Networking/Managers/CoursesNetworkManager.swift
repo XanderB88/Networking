@@ -21,8 +21,11 @@ class CoursesNetworkManager {
 
             guard let data = data else { return }
             
-            do {
-                let courses = try JSONDecoder().decode([Course].self, from: data)
+            do  {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let courses = try decoder.decode([Course].self, from: data)
+                
                 completion(courses)
             } catch let error {
                 print(error.localizedDescription)
