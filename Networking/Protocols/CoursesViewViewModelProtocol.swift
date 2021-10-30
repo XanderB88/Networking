@@ -14,5 +14,6 @@ protocol CoursesViewViewModelProtocol {
     func getCourses(withURL apiURL: String) 
     func getCourse(withIndexPath indexPath: IndexPath) -> Course
     func numberOfRows() -> Int
+    func cellViewModel(withIndexPath indexPath: IndexPath) -> CourseTableViewCellViewModelProtocol?
     
 }

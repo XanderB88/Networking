@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 class NetworkManager {
     
@@ -32,4 +31,17 @@ class NetworkManager {
             }
         }.resume()
     }
+    
+    func downloadImage(withURL url: String, completion: @escaping (Data) -> ()) {
+        guard let url = URL(string: url) else { return }
+        
+        let session = URLSession.shared
+        session.dataTask(with: url) { data, response, error in
+            
+            if let data = data {
+                completion(data)
+            }
+        }.resume()
+    }
+    
 }

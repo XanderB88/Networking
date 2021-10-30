@@ -14,6 +14,8 @@ class ImageViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    let url = "https://applelives.com/wp-content/uploads/2016/04/apple-wallpaper-30.jpg"
+    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -25,19 +27,15 @@ class ImageViewController: UIViewController {
     }
     
     func fetchImage() {
+       
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        guard let url = URL(string: "https://applelives.com/wp-content/uploads/2016/04/apple-wallpaper-30.jpg") else { return }
-        
-        let session = URLSession.shared
-        session.dataTask(with: url) { data, response, error in
-            if let data = data, let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
-                    self.imageView.image = image
-                }
+        NetworkManager.shared.downloadImage(withURL: url) { data in
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+                self.imageView.image = UIImage(data: data)
             }
-        }.resume()
+        }
     }
 }

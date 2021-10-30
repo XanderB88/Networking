@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		11618C8F2728DC530059F76B /* CoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11618C8E2728DC520059F76B /* CoursesViewController.swift */; };
-		11618C912728DC750059F76B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11618C902728DC750059F76B /* TableViewCell.swift */; };
+		11618C912728DC750059F76B /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11618C902728DC750059F76B /* CourseTableViewCell.swift */; };
+		1162FEA9272CB84D0016654C /* CourseTableViewCellViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162FEA8272CB84D0016654C /* CourseTableViewCellViewModelProtocol.swift */; };
+		1162FEAB272CB8ED0016654C /* CourseTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1162FEAA272CB8ED0016654C /* CourseTableViewCellViewModel.swift */; };
 		11642F6D272783E100113412 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11642F6C272783E100113412 /* AppDelegate.swift */; };
 		11642F6F272783E100113412 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11642F6E272783E100113412 /* SceneDelegate.swift */; };
 		11642F71272783E100113412 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11642F70272783E100113412 /* ViewController.swift */; };
@@ -25,7 +27,9 @@
 
 /* Begin PBXFileReference section */
 		11618C8E2728DC520059F76B /* CoursesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesViewController.swift; sourceTree = "<group>"; };
-		11618C902728DC750059F76B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		11618C902728DC750059F76B /* CourseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
+		1162FEA8272CB84D0016654C /* CourseTableViewCellViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCellViewModelProtocol.swift; sourceTree = "<group>"; };
+		1162FEAA272CB8ED0016654C /* CourseTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		11642F69272783E100113412 /* Networking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Networking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11642F6C272783E100113412 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11642F6E272783E100113412 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1162FEAC272CB9410016654C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11618C8E2728DC520059F76B /* CoursesViewController.swift */,
+				11618C902728DC750059F76B /* CourseTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		11642F60272783E100113412 = {
 			isa = PBXGroup;
 			children = (
@@ -72,11 +85,12 @@
 		11642F6B272783E100113412 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				116CAB81272B881F00EC69C0 /* ViewModels */,
-				116CAB80272B87F100EC69C0 /* Protocols */,
+				11642F80272783F000113412 /* Application */,
 				11685DFA272A16E3009E2277 /* Managers */,
 				11685DF7272A1502009E2277 /* Model */,
-				11642F80272783F000113412 /* Application */,
+				116CAB80272B87F100EC69C0 /* Protocols */,
+				116CAB81272B881F00EC69C0 /* ViewModels */,
+				1162FEAC272CB9410016654C /* Views */,
 				11642F832727847A00113412 /* Controllers */,
 				11642F822727845100113412 /* Interface Builder */,
 				11642F812727840800113412 /* Supporting Files */,
@@ -116,8 +130,6 @@
 			children = (
 				11642F70272783E100113412 /* ViewController.swift */,
 				11642F8427278DDB00113412 /* ImageViewController.swift */,
-				11618C8E2728DC520059F76B /* CoursesViewController.swift */,
-				11618C902728DC750059F76B /* TableViewCell.swift */,
 				116CAB7E272B660E00EC69C0 /* DetailViewController.swift */,
 			);
 			path = Controllers;
@@ -143,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				116CAB84272B889C00EC69C0 /* CoursesViewViewModelProtocol.swift */,
+				1162FEA8272CB84D0016654C /* CourseTableViewCellViewModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -151,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				116CAB82272B886E00EC69C0 /* CoursesViewViewModel.swift */,
+				1162FEAA272CB8ED0016654C /* CourseTableViewCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -232,9 +246,11 @@
 				11642F6D272783E100113412 /* AppDelegate.swift in Sources */,
 				11685DF9272A151E009E2277 /* Course.swift in Sources */,
 				11642F8527278DDB00113412 /* ImageViewController.swift in Sources */,
-				11618C912728DC750059F76B /* TableViewCell.swift in Sources */,
+				1162FEA9272CB84D0016654C /* CourseTableViewCellViewModelProtocol.swift in Sources */,
+				11618C912728DC750059F76B /* CourseTableViewCell.swift in Sources */,
 				11642F6F272783E100113412 /* SceneDelegate.swift in Sources */,
 				116CAB85272B889C00EC69C0 /* CoursesViewViewModelProtocol.swift in Sources */,
+				1162FEAB272CB8ED0016654C /* CourseTableViewCellViewModel.swift in Sources */,
 				11618C8F2728DC530059F76B /* CoursesViewController.swift in Sources */,
 				11685DFC272A1715009E2277 /* NetworkManager.swift in Sources */,
 			);

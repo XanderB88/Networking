@@ -25,4 +25,9 @@ class CoursesViewViewModel: CoursesViewViewModelProtocol {
         return swiftBookCourses.count
     }
     
+    func cellViewModel(withIndexPath indexPath: IndexPath) -> CourseTableViewCellViewModelProtocol? {
+        let course = swiftBookCourses[indexPath.row]
+        return CourseTableViewCellViewModel(course: course)
+    }
+    
 }
