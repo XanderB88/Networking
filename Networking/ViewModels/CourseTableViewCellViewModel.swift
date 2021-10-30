@@ -5,7 +5,7 @@
 //  Created by Alexander on 30.10.2021.
 //
 
-import UIKit
+import Foundation
 
 class CourseTableViewCellViewModel: CourseTableViewCellViewModelProtocol {
     
@@ -24,10 +24,10 @@ class CourseTableViewCellViewModel: CourseTableViewCellViewModelProtocol {
         return String(course.numberOfTests)
     }
     
-    func getImage(completion: @escaping (UIImage) -> ()){
+    func getImage(completion: @escaping (Data) -> ()) {
         NetworkManager.shared.downloadImage(withURL: course.imageUrl) { data in
-            guard let image = UIImage(data: data) else { return }
-            completion(image)
+            let imageData = data
+            completion(imageData)
         }
     }
     

@@ -22,9 +22,9 @@ class CourseTableViewCell: UITableViewCell {
             courseNameLabel.text = viewModel.courseName
             lessonsNumberLabel.text = viewModel.numberOfLessons
             testsNumberLabel.text = viewModel.numberOfTests
-            viewModel.getImage { image in
+            viewModel.getImage { imageData in
                 DispatchQueue.main.async {
-                    self.courseImage.image = image
+                    self.courseImage.image = UIImage(data: imageData)
                 }
             }
         }

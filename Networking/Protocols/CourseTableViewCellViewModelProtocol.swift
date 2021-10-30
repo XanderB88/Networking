@@ -6,7 +6,7 @@
 //
 
 
-import UIKit
+import Foundation
 
 protocol CourseTableViewCellViewModelProtocol: AnyObject {
     
@@ -14,6 +14,6 @@ protocol CourseTableViewCellViewModelProtocol: AnyObject {
     var numberOfLessons: String { get }
     var numberOfTests: String { get }
     
-    func getImage(completion: @escaping (UIImage) -> ())
+    func getImage(completion: @escaping (Data) -> ())
     
 }
