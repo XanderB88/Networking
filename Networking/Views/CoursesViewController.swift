@@ -59,18 +59,6 @@ extension CoursesViewController: UITableViewDataSource {
         return cell
     }
     
-    private func fetchCourseImage(withCell cell: CourseTableViewCell, withURL url: String) {
-        DispatchQueue.global().async {
-          
-            guard let url = URL(string: url), let imageData = try? Data(contentsOf: url) else { return }
-            
-            DispatchQueue.main.async {
-                cell.courseImage.image = UIImage(data: imageData)
-            }
-            
-        }
-        
-    }
 }
 
 extension CoursesViewController: UITableViewDelegate {
