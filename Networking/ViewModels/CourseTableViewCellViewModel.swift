@@ -17,11 +17,11 @@ class CourseTableViewCellViewModel: CourseTableViewCellViewModelProtocol {
     }
     
     var numberOfLessons: String {
-        return String(course.numberOfLessons)
+        return "Number of lessons: \(course.numberOfLessons)"
     }
     
     var numberOfTests: String {
-        return String(course.numberOfTests)
+        return "Number of tests: \(course.numberOfTests)"
     }
     
     func getImage(completion: @escaping (Data) -> ()) {
