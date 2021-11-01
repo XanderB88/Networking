@@ -54,7 +54,13 @@ class MainCollectionViewController: UICollectionViewController {
             
             let progressView = UIProgressView(frame: CGRect(x: 0, y: self.alert.view.frame.height - 44, width: self.alert.view.frame.width, height: 2))
             progressView.tintColor = .blue
-            progressView.progress = 0.5
+            
+            self.dataProvider.onProgress = { progress in
+                
+                progressView.progress = Float(progress)
+                self.alert.message = String(Int(progress * 100)) + "%"
+                
+            }
             
             self.alert.view.addSubview(activityIndicator)
             self.alert.view.addSubview(progressView)
