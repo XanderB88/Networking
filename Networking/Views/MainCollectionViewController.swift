@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 enum Actions: String, CaseIterable {
     case downloadImage = "Download Image"
@@ -24,6 +25,20 @@ class MainCollectionViewController: UICollectionViewController {
     
     private var alert: UIAlertController!
     private var dataProvider = DataProvider()
+    private var filePath: String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        registerForNotifications()
+        
+        dataProvider.fileLocation = { location in
+            
+            self.filePath = location.absoluteString
+            self.alert.dismiss(animated: false, completion: nil)
+            self.postNotification()
+        }
+    }
     
     private func showAlert() {
         alert = UIAlertController(title: "Downloading...", message: "0%", preferredStyle: .alert)
@@ -102,5 +117,28 @@ class MainCollectionViewController: UICollectionViewController {
                 showAlert()
                 dataProvider.startDownload()
         }
+    }
+}
+
+// MARK: - Notifications
+
+extension MainCollectionViewController {
+    
+    private func registerForNotifications() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, _ in
+            
+        }
+    }
+    
+    private func postNotification() {
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Download complete"
+        content.body = "Your background transfer has completed. File path: \(filePath!)"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 3, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "TransferComplete", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
     }
 }
