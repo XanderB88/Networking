@@ -12,48 +12,48 @@ enum Actions: String, CaseIterable {
     case get = "GET"
     case post = "POST"
     case courses = "Courses"
-    case uploadImage = "Upload Image"
+    case downloadFiles = "Download Files"
 }
 
 private let reuseIdentifier = "ActionCell"
 private let url = "https://jsonplaceholder.typicode.com/posts"
 
 class MainCollectionViewController: UICollectionViewController {
-
+    
     let actions = Actions.allCases
-
+     
     // MARK: UICollectionViewDataSource
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return actions.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
-    
+        
         cell.actionLabel.text = actions[indexPath.row].rawValue
-    
+        
         return cell
     }
-
+    
     // MARK: UICollectionViewDelegate
-
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let action = actions[indexPath.row]
         
         switch action {
             case .downloadImage:
-               performSegue(withIdentifier: "showImage", sender: self)
+                performSegue(withIdentifier: "showImage", sender: self)
             case .get:
                 NetworkManager.shared.getRequest(withUrl: url)
             case .post:
                 NetworkManager.shared.postRequest(withURL: url)
             case .courses:
                 performSegue(withIdentifier: "showCourses", sender: self)
-            case .uploadImage:
-                print("uploadImage")
+            case .downloadFiles:
+                print(action.rawValue)
         }
     }
 }
