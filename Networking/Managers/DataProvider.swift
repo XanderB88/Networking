@@ -15,16 +15,18 @@ class DataProvider: NSObject {
     var fileLocation: ((URL) -> ())?
     var onProgress: ((Double) -> ())?
     
-    private lazy var bgSession: URLSession = {
+    private lazy var backGroundSession: URLSession = {
         let config = URLSessionConfiguration.background(withIdentifier: "AlexanderBykov.Networking")
-        config.isDiscretionary =  true
+        config.isDiscretionary =  true   // Start of task in optimal time
+        config.timeoutIntervalForResource = 300 // A waiting time of cellular in seconds
+        config.waitsForConnectivity = true // Waiting for cellular connection
         config.sessionSendsLaunchEvents =  true
-        return URLSession(configuration: config, delegate: self, delegateQueue: nil)
+        return URLSession(configuration: config, delegate: self, delegateQueue: nil) //
     }()
     
     func startDownload() {
         if let url = URL(string: "https://speed.hetzner.de/100MB.bin") {
-            downloadTask = bgSession.downloadTask(with: url)
+            downloadTask = backGroundSession.downloadTask(with: url)
             downloadTask.earliestBeginDate = Date().addingTimeInterval(3)
             downloadTask.countOfBytesClientExpectsToSend = 512
             downloadTask.countOfBytesClientExpectsToReceive = 100 * 1024 * 1024

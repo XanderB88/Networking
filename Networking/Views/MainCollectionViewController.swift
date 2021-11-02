@@ -8,27 +8,20 @@
 import UIKit
 import UserNotifications
 
-enum Actions: String, CaseIterable {
-    case downloadImage = "Download Image"
-    case get = "GET"
-    case post = "POST"
-    case courses = "Courses"
-    case downloadFiles = "Download Files"
-}
-
 private let reuseIdentifier = "ActionCell"
 private let url = "https://jsonplaceholder.typicode.com/posts"
 
 class MainCollectionViewController: UICollectionViewController {
-    
-    let actions = Actions.allCases
-    
+   
     private var alert: UIAlertController!
     private var dataProvider = DataProvider()
     private var filePath: String?
+    private var viewModel: MainCollectionViewViewModelProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel = MainCollectionViewViewModel()
         
         registerForNotifications()
         
@@ -41,6 +34,7 @@ class MainCollectionViewController: UICollectionViewController {
     }
     
     private func showAlert() {
+       
         alert = UIAlertController(title: "Downloading...", message: "0%", preferredStyle: .alert)
         
         let height = NSLayoutConstraint(item: alert.view!,
@@ -87,13 +81,16 @@ class MainCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return actions.count
+        return viewModel?.numberOfItems() ?? .zero
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
+        guard let viewModel = viewModel else { return cell }
         
-        cell.actionLabel.text = actions[indexPath.row].rawValue
+        let cellViewModel = viewModel.cellViewModel(withIndexPath: indexPath)
+        
+        cell.viewModel = cellViewModel as? MainCollectionViewCellViewModel
         
         return cell
     }
@@ -102,7 +99,9 @@ class MainCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let action = actions[indexPath.row]
+        guard let viewModel = viewModel else { return }
+        
+        let action = viewModel.getAction(withIndexPath: indexPath)
         
         switch action {
             case .downloadImage:
