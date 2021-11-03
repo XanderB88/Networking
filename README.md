@@ -9,3 +9,4 @@ An app where user make simple https requests for getting data from web.
     * GET Request;
     * POST Request;
     * Working with JSON.
+    * Working with Alamofire.

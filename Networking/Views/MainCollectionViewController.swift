@@ -42,7 +42,7 @@ class MainCollectionViewController: UICollectionViewController {
             case "showCourses":
                 coursesVC?.showCourses()
             case "showCoursesAlamofire":
-                print("hi!")
+                coursesVC?.showCoursesAlamofire()
             default:
                 break
         }

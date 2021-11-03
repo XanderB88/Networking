@@ -11,7 +11,8 @@ protocol CoursesViewViewModelProtocol {
     
     var swiftBookCourses: [Course] { get set }
     
-    func getCourses(withURL apiURL: String) 
+    func getCourses(withURL apiURL: String)
+    func getCoursesAlamofire(withURL apiURL: String)
     func getCourse(withIndexPath indexPath: IndexPath) -> Course
     func numberOfRows() -> Int
     func cellViewModel(withIndexPath indexPath: IndexPath) -> CourseTableViewCellViewModelProtocol?

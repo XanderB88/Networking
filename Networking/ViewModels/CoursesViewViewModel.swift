@@ -17,6 +17,13 @@ class CoursesViewViewModel: CoursesViewViewModelProtocol {
                  }
     }
     
+    
+    func getCoursesAlamofire(withURL apiURL: String) {
+        NetworkManager.shared.fetchCourses(withURL: apiURL) { courses in
+                     self.swiftBookCourses = courses
+                 }
+    }
+    
     func getCourse(withIndexPath indexPath: IndexPath) -> Course {
         return swiftBookCourses[indexPath.row]
     }

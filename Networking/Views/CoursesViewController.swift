@@ -21,6 +21,11 @@ class CoursesViewController: UIViewController {
         viewModel?.getCourses(withURL: apiURL)
     }
     
+    func showCoursesAlamofire() {
+        viewModel = CoursesViewViewModel()
+        viewModel?.getCoursesAlamofire(withURL: apiURL)
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailViewController = segue.destination as! DetailViewController
