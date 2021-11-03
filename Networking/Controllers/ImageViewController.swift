@@ -15,12 +15,10 @@ class ImageViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let url = "https://applelives.com/wp-content/uploads/2016/04/apple-wallpaper-30.jpg"
-    
-    
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         activityIndicator.isHidden = true
         activityIndicator.hidesWhenStopped = true
         fetchImage()

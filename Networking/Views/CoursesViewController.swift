@@ -8,23 +8,17 @@
 import UIKit
 
 class CoursesViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var apiURL = "https://swiftbook.ru/wp-content/uploads/api/api_courses"
     private var courseName: String?
     private var courseURL: String?
     var viewModel: CoursesViewViewModelProtocol?
-   
     
-    
-    // MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func showCourses() {
         viewModel = CoursesViewViewModel()
         viewModel?.getCourses(withURL: apiURL)
-
     }
     
     // MARK: - Navigation
@@ -32,7 +26,7 @@ class CoursesViewController: UIViewController {
         let detailViewController = segue.destination as! DetailViewController
         
         detailViewController.selectedCourse = courseName
-       
+        
         if let url = courseURL {
             detailViewController.urlLink = url
         }
@@ -49,7 +43,7 @@ extension CoursesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CourseTableViewCell
-
+        
         guard let viewModel = viewModel else { return cell }
         
         let cellViewModel = viewModel.cellViewModel(withIndexPath: indexPath)

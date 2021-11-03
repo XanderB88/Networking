@@ -33,6 +33,64 @@ class MainCollectionViewController: UICollectionViewController {
         }
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let coursesVC = segue.destination as? CoursesViewController
+
+        switch segue.identifier {
+            case "showCourses":
+                coursesVC?.showCourses()
+            case "showCoursesAlamofire":
+                print("hi!")
+            default:
+                break
+        }
+    }
+     
+    // MARK: UICollectionViewDataSource
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of items
+        return viewModel?.numberOfItems() ?? .zero
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
+        guard let viewModel = viewModel else { return cell }
+        
+        let cellViewModel = viewModel.cellViewModel(withIndexPath: indexPath)
+        
+        cell.viewModel = cellViewModel as? MainCollectionViewCellViewModel
+        
+        return cell
+    }
+    
+    // MARK: UICollectionViewDelegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let viewModel = viewModel else { return }
+        
+        let action = viewModel.getAction(withIndexPath: indexPath)
+        
+        switch action {
+            case .downloadImage:
+                performSegue(withIdentifier: "showImage", sender: self)
+            case .get:
+                NetworkManager.shared.getRequest(withUrl: url)
+            case .post:
+                NetworkManager.shared.postRequest(withURL: url)
+            case .courses:
+                performSegue(withIdentifier: "showCourses", sender: self)
+            case .downloadFiles:
+                showAlert()
+                dataProvider.startDownload()
+            case .coursesAlamofire:
+                performSegue(withIdentifier: "showCoursesAlamofire", sender: self)
+        }
+    }
+    
     private func showAlert() {
        
         alert = UIAlertController(title: "Downloading...", message: "0%", preferredStyle: .alert)
@@ -75,47 +133,6 @@ class MainCollectionViewController: UICollectionViewController {
             self.alert.view.addSubview(progressView)
         }
         
-    }
-     
-    // MARK: UICollectionViewDataSource
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return viewModel?.numberOfItems() ?? .zero
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MainCollectionViewCell
-        guard let viewModel = viewModel else { return cell }
-        
-        let cellViewModel = viewModel.cellViewModel(withIndexPath: indexPath)
-        
-        cell.viewModel = cellViewModel as? MainCollectionViewCellViewModel
-        
-        return cell
-    }
-    
-    // MARK: UICollectionViewDelegate
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        guard let viewModel = viewModel else { return }
-        
-        let action = viewModel.getAction(withIndexPath: indexPath)
-        
-        switch action {
-            case .downloadImage:
-                performSegue(withIdentifier: "showImage", sender: self)
-            case .get:
-                NetworkManager.shared.getRequest(withUrl: url)
-            case .post:
-                NetworkManager.shared.postRequest(withURL: url)
-            case .courses:
-                performSegue(withIdentifier: "showCourses", sender: self)
-            case .downloadFiles:
-                showAlert()
-                dataProvider.startDownload()
-        }
     }
 }
 

@@ -13,6 +13,7 @@ enum Actions: String, CaseIterable {
     case post = "POST"
     case courses = "Courses"
     case downloadFiles = "Download Files"
+    case coursesAlamofire = "Courses (Alamofire)"
 }
 
 class MainCollectionViewViewModel: MainCollectionViewViewModelProtocol {
