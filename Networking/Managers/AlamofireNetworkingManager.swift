@@ -20,8 +20,12 @@ class AlamofireNetworkingManager {
         
         AF.request(url, method: .get).validate().responseDecodable(of: [Course].self) { response in
             
-            guard let courses = response.value else { return }
-            completion(courses)
+            switch response.result {
+                case .success(let courses):
+                    completion(courses)
+                case .failure(let error):
+                    print(error)
+            }
         }
     }
 }
