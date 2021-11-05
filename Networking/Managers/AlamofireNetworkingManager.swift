@@ -18,14 +18,20 @@ class AlamofireNetworkingManager {
         
         guard let url = URL(string: url) else { return }
         
-        AF.request(url, method: .get).validate().responseDecodable(of: [Course].self) { response in
+        AF.request(url, method: .get).validate().response { responseData in
+           
+            guard let data = responseData.data else { return }
             
-            switch response.result {
-                case .success(let courses):
-                    completion(courses)
-                case .failure(let error):
-                    print(error)
+            do  {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let courses = try decoder.decode([Course].self, from: data)
+                
+                completion(courses)
+            } catch let error {
+                print(error.localizedDescription)
             }
+            
         }
     }
 }

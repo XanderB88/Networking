@@ -13,15 +13,16 @@ class CoursesViewViewModel: CoursesViewViewModelProtocol {
     
     func getCourses(withURL apiURL: String) {
         NetworkManager.shared.fetchCourses(withURL: apiURL) { courses in
-                     self.swiftBookCourses = courses
-                 }
+            self.swiftBookCourses = courses
+        }
     }
     
     
     func getCoursesAlamofire(withURL apiURL: String) {
-        NetworkManager.shared.fetchCourses(withURL: apiURL) { courses in
-                     self.swiftBookCourses = courses
-                 }
+        AlamofireNetworkingManager.shared.fetchCourses(withURL: apiURL) { courses in
+            self.swiftBookCourses = courses
+            print(self.swiftBookCourses)
+        }
     }
     
     func getCourse(withIndexPath indexPath: IndexPath) -> Course {

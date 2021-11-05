@@ -50,9 +50,9 @@ extension CoursesViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as! CourseTableViewCell
         
         guard let viewModel = viewModel else { return cell }
-        
+
         let cellViewModel = viewModel.cellViewModel(withIndexPath: indexPath)
-        
+
         cell.viewModel = cellViewModel as? CourseTableViewCellViewModel
         
         return cell
